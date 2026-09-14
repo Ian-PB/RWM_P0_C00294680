@@ -26,5 +26,8 @@
 		"vite": "^8.0.16",
 		"vitest": "^4.1.11",
 		"vitest-browser-svelte": "^2.1.1"
+	},
+  "dependencies": {
+    "peer-filter-C00295678": "github:stephenarthur64/-RWM_P0_C00295678#v0.1.1"
 	}
 }
