@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { cubes } from '$lib/filters';
-    let raw = $state('1 3 5 7 9 999');
+    import { collatzMulti } from '$lib/filters/collatz';
+    let raw = $state('2 5 21 52 999 0');
     let input = $derived(
         raw.trim().split(/\s+/).filter(Boolean).map(Number)
     );
-    let output = $derived(cubes(input));
+    let output = $derived(collatzMulti(input));
 </script>
 
 <h1>Sequence Filter Demo</h1>
