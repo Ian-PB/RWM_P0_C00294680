@@ -4,6 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
+		"emit:results": "tsx scripts/emit-results.mjs",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -22,12 +23,13 @@
 		"playwright": "^1.60.0",
 		"svelte": "^5.56.1",
 		"svelte-check": "^4.6.0",
+		"tsx": "^4.23.13",
 		"typescript": "^6.0.3",
 		"vite": "^8.0.16",
 		"vitest": "^4.1.11",
 		"vitest-browser-svelte": "^2.1.1"
 	},
-  "dependencies": {
-    "peer-filter-C00295678": "github:stephenarthur64/-RWM_P0_C00295678#v0.1.2"
+	"dependencies": {
+		"peer-filter-C00295678": "github:stephenarthur64/-RWM_P0_C00295678#v0.1.2"
 	}
 }
