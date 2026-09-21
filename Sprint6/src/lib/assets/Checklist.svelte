@@ -1,17 +1,14 @@
 <script>
-    export let id = 0;
-    let label = "Temp";
-    let change = false
-
-    label = "Temp"
+    export let id = "";
+    export let label = "Temp";
+    export let change = false
 </script>
 
 <label>
-    <input type="checkbox" bind:checked={change}>{label}{id}
-</label>
+    <input 
+    id={id}
+    type="checkbox" 
+    bind:checked={change}>
 
-{#if change}
-	<p>Active</p>
-{:else}
-	<p>Not active</p>
-{/if}
+    {label} - {id}<br>
+</label>
