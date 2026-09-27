@@ -1,16 +1,50 @@
 <h1 data-testid="title">Progress Checklist Page</h1>
 
+<style>
+    .progress-wrapper {
+        display: inline-block;
+    }
+
+    .progress-wrapper h2 {
+        margin-bottom: 5px;
+    }
+
+    .progress-container {
+        position: relative;
+        width: 100%;
+        height: 20px;
+    }
+
+    .target-bar {
+        position: absolute;
+        height: 100%;
+        background: lightgrey;
+    }
+
+    .animated-bar {
+        position: absolute;
+        height: 100%;
+        background: grey;
+    }
+</style>
+
 <script lang="ts">
     import Checklist from "$lib/assets/Checklist.svelte";
     import {completedStore, percentStore} from '$lib/stores/checklist';
+    import { tweened } from 'svelte/motion';
+    import { cubicOut } from 'svelte/easing';
+
 
     const maxAmount = 5
     let currentCount = 0;
     let percentage = 0;
+    const animatedPercent = tweened(0, { duration: 1000, easing: cubicOut });
 
     function submitChecklist() {
         currentCount = $completedStore;
         percentage = $percentStore;
+
+        animatedPercent.set($percentStore);
     }
 
     function updateAmount()
@@ -28,9 +62,25 @@
 
         percentage = (currentCount / maxAmount) * 100;
     }
+
+
 </script>
 
-<h2>{currentCount} / {maxAmount} ({percentage}%)</h2>
+<div class="progress-wrapper">
+    <h2>{currentCount} / {maxAmount} ({percentage}%)</h2>
+
+    <div class="progress-container">
+        <div
+            class="target-bar"
+            style={`width: ${percentage}%`}
+        ></div>
+
+        <div
+            class="animated-bar"
+            style={`width: ${$animatedPercent}%`}
+        ></div>
+    </div>
+</div>
 
 <main>
     <Checklist label="Box " id={1}></Checklist>
